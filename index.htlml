@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClubPass</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 5rem;">
+  <h1>Welcome to ClubPass 🎉</h1>
+  <p>Track events, join meetups, and earn rewards for being social!</p>
+  <a href="https://play.google.com/store/apps/details?id=your.app.id">📲 Download Now</a>
+</body>
+</html>

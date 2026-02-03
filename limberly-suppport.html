@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Limberly support, FAQs, and contact information." />
+    <title>Limberly Support</title>
+    <style>
+      :root{
+        --bg:#fbfbfa;
+        --card:#ffffff;
+        --text:#102a25;
+        --muted:#4c6a63;
+        --border:#e6ecea;
+        --accent:#1f6f63;
+      }
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        line-height:1.5;
+      }
+      header{
+        padding:48px 16px 12px;
+        text-align:center;
+      }
+      header h1{
+        margin:0;
+        font-size:34px;
+        letter-spacing:-0.02em;
+      }
+      header p{
+        margin:10px 0 0;
+        color:var(--muted);
+        font-size:16px;
+      }
+      main{
+        max-width:860px;
+        margin:0 auto;
+        padding:16px;
+      }
+      .grid{
+        display:grid;
+        grid-template-columns: 1fr;
+        gap:14px;
+        margin:18px 0 32px;
+      }
+      @media (min-width: 820px){
+        .grid{ grid-template-columns: 1fr 1fr; }
+      }
+      .card{
+        background:var(--card);
+        border:1px solid var(--border);
+        border-radius:14px;
+        padding:18px;
+      }
+      .card h2{
+        margin:0 0 10px;
+        font-size:18px;
+      }
+      .card p, .card li{
+        color:var(--muted);
+        margin:0;
+        font-size:15px;
+      }
+      a{ color:var(--accent); text-decoration:none; }
+      a:hover{ text-decoration:underline; }
+      ul{ margin:10px 0 0 18px; padding:0; }
+      .faq h3{
+        margin:14px 0 6px;
+        font-size:15px;
+        color:var(--text);
+      }
+      .footer{
+        margin:24px 0 40px;
+        color:var(--muted);
+        font-size:13px;
+        text-align:center;
+      }
+      .pill{
+        display:inline-block;
+        padding:4px 10px;
+        border-radius:999px;
+        border:1px solid var(--border);
+        background:#f3f7f6;
+        color:var(--muted);
+        font-size:12px;
+        margin-top:10px;
+      }
+      .notice{
+        margin-top:10px;
+        font-size:13px;
+        color:var(--muted);
+      }
+      .mono{
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Limberly Support</h1>
+      <p>Help, FAQs, and contact information for the Limberly app.</p>
+      <div class="pill">Support URL for App Store Connect</div>
+    </header>
+
+    <main>
+      <section class="grid">
+        <div class="card">
+          <h2>Contact</h2>
+          <p>
+            Email: <a href="mailto:YOUR_SUPPORT_EMAIL">YOUR_SUPPORT_EMAIL</a>
+          </p>
+          <p class="notice">
+            Please include your device model, iOS version, app version, and what you were doing when the issue happened.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>App Info</h2>
+          <p>App: <strong>Limberly</strong></p>
+          <p>Version: <span class="mono">APP_VERSION</span></p>
+          <p class="notice">
+            If you’re contacting support about a bug, including the version helps us resolve it faster.
+          </p>
+        </div>
+      </section>
+
+      <section class="card faq">
+        <h2>FAQs</h2>
+
+        <h3>How do I start a flow?</h3>
+        <p>Open <strong>Flows</strong>, choose a routine, then tap <strong>Start</strong>.</p>
+
+        <h3>Where can I view pose guidance?</h3>
+        <p>Open <strong>Poses</strong> to browse pose instructions and cues.</p>
+
+        <h3>The app looks different on my phone—why?</h3>
+        <p>Layout can vary slightly by screen size and iOS version. If something looks wrong, email support with a screenshot.</p>
+
+        <h3>I found a bug. What details should I send?</h3>
+        <p>
+          Please include:
+        </p>
+        <ul>
+          <li>iPhone model (e.g., iPhone 14 Pro)</li>
+          <li>iOS version (e.g., iOS 17.4)</li>
+          <li>Limberly app version (shown above)</li>
+          <li>Steps to reproduce</li>
+          <li>A screenshot or screen recording (optional but helpful)</li>
+        </ul>
+      </section>
+
+      <section class="grid" style="margin-top:14px;">
+        <div class="card">
+          <h2>Privacy</h2>
+          <p>
+            Limberly does not sell your personal data.
+            If you create an account, your login information is used to provide access to the app.
+          </p>
+          <p class="notice">
+            For privacy questions or data requests, email:
+            <a href="mailto:limberly-support@paintedsky.club">YOUR_SUPPORT_EMAIL</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Links</h2>
+          <ul>
+            <li><a href="https://www.paintedsky.club/privacy-policy-limberly.html">Privacy</a></li>
+            <li><a href="mailto:limberly-support@paintedsky.club">Email Support</a></li>
+          </ul>
+          <p class="notice">
+            Tip: You can add separate Privacy Policy / Terms pages later if needed.
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">
+        © <span id="year"></span> Limberly • Built with care
+      </div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

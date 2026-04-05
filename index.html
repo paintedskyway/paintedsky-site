@@ -1,64 +1,589 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="aluiVdE9oWPG3t7p13fOnFGKXOOGl_N3D2vDqIKUkz8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painted Sky</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaintedSkyway — Technology Infrastructure for Africa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
+:root {
+  --navy:    #0C1C2E;
+  --navy2:   #162840;
+  --navy3:   #1E3A5A;
+  --gold:    #C8922A;
+  --gold-lt: #E8B050;
+  --gold-dim: #9A6E20;
+  --cream:   #F5F0E8;
+  --mist:    #D6CFC4;
+  --slate:   #8A9BB0;
+  --body:    #3A4A5C;
+  --white:   #FFFFFF;
+}
 
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
+html { scroll-behavior: smooth; }
 
-    a.button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      background-color: #00c9a7;
-      color: #000;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
 
-    a.button:hover {
-      background-color: #00b28f;
-    }
+/* ── NAV ─────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(12,28,46,0.95) 0%, transparent 100%);
+  backdrop-filter: blur(8px);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--white);
+}
+.nav-logo span { color: var(--gold-lt); }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--mist);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
 
-    footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-  </style>
+/* ── HERO ────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Star field */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 32% 14%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 82% 31%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 45% 18%, rgba(232,176,80,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 7% 62%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 58% 72%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 24% 78%, rgba(232,176,80,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 76% 88%, rgba(255,255,255,0.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Glow orb */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,146,42,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+.hero-title span { color: var(--gold-lt); font-style: italic; }
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 19px);
+  font-weight: 300;
+  color: var(--mist);
+  max-width: 600px;
+  line-height: 1.65;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 32px;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--mist);
+  padding: 14px 32px;
+  border: 1px solid rgba(214,207,196,0.3);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+/* ── GOLD DIVIDER ────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0 60px;
+}
+
+/* ── WHAT WE BUILD ───────────────────────────── */
+.section {
+  padding: 100px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.section-title em { color: var(--gold-lt); font-style: italic; }
+.section-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mist);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ── THESIS ──────────────────────────────────── */
+.thesis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-top: 60px;
+  background: rgba(200,146,42,0.1);
+  border: 1px solid rgba(200,146,42,0.15);
+}
+.thesis-card {
+  background: var(--navy2);
+  padding: 40px 32px;
+  transition: background 0.2s;
+}
+.thesis-card:hover { background: var(--navy3); }
+.thesis-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(200,146,42,0.25);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.thesis-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.thesis-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.65;
+}
+
+/* ── VENTURES ────────────────────────────────── */
+.ventures-section {
+  padding: 100px 60px;
+  background: var(--navy2);
+}
+.ventures-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ventures-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 60px;
+}
+.venture-card {
+  border: 1px solid rgba(200,146,42,0.15);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.venture-card:hover { border-color: rgba(200,146,42,0.4); }
+.venture-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.venture-card:hover::before { opacity: 1; }
+.venture-status {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.venture-status.soon { color: var(--slate); }
+.venture-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.venture-tagline {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gold-lt);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+.venture-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mist);
+  line-height: 1.65;
+}
+.venture-tag {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border: 1px solid rgba(138,155,176,0.25);
+  padding: 4px 10px;
+}
+
+/* ── PHILOSOPHY ──────────────────────────────── */
+.philosophy-section {
+  padding: 120px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pull-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--mist);
+  line-height: 1.5;
+  position: relative;
+  padding: 0 40px;
+}
+.pull-quote::before, .pull-quote::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 40px;
+  background: var(--gold);
+  top: 50%;
+}
+.pull-quote::before { left: -10px; }
+.pull-quote::after { right: -10px; }
+.pull-quote em { color: var(--gold-lt); font-style: normal; }
+.pull-attribution {
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  background: #060F1A;
+  padding: 60px 60px 40px;
+  border-top: 1px solid rgba(200,146,42,0.1);
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--white);
+}
+.footer-brand span { color: var(--gold-lt); }
+.footer-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--slate);
+  margin-top: 8px;
+  max-width: 300px;
+  line-height: 1.6;
+}
+.footer-links-col h4 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-links-col a {
+  display: block;
+  font-size: 13px;
+  color: var(--slate);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.footer-links-col a:hover { color: var(--mist); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(138,155,176,0.5);
+}
+.footer-location {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(138,155,176,0.4);
+}
+
+/* ── ANIMATIONS ──────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .section, .ventures-section, .philosophy-section { padding: 60px 24px; }
+  .thesis-grid, .ventures-grid { grid-template-columns: 1fr; }
+  footer { padding: 48px 24px 32px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .pull-quote { padding: 0 16px; }
+}
+</style>
 </head>
 <body>
-  <h1>Painted Sky</h1>
-  <p>Connecting people, building community, and rewarding real-world interactions. Coming soon.</p>
-  <a class="button" href="#">📲 Notify Me</a>
-  <footer>&copy; 2025 Painted Sky</footer>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Painted<span>Skyway</span></a>
+  <ul class="nav-links">
+    <li><a href="#thesis">Our Thesis</a></li>
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Technology Infrastructure · Africa</p>
+  <h1 class="hero-title">
+    Building the systems<br>
+    <span>Africa runs on</span>
+  </h1>
+  <p class="hero-sub">
+    PaintedSkyway builds technology infrastructure for Africa's most critical industries — starting where the problems are hardest and the need is greatest.
+  </p>
+  <div class="hero-cta">
+    <a href="#ventures" class="btn-primary">Our Ventures</a>
+    <a href="#thesis" class="btn-ghost">Our Thinking</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THESIS -->
+<section id="thesis">
+  <div class="section">
+    <p class="section-label">Our Thesis</p>
+    <h2 class="section-title">Infrastructure first.<br><em>Always.</em></h2>
+    <p class="section-body">
+      The most transformative technology companies in Africa won't be built by copying Silicon Valley. They'll be built by people who understand that the continent's greatest leverage points are infrastructure problems — and that solving them requires hardware, software, and deep local knowledge working together.
+    </p>
+    <div class="thesis-grid">
+      <div class="thesis-card">
+        <div class="thesis-num">01</div>
+        <div class="thesis-title">Hardware-first thinking</div>
+        <div class="thesis-body">The most defensible systems are those anchored in the physical world. Software that floats above the ground can be copied. Hardware that reads ground truth cannot.</div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">02</div>
+        <div class="thesis-title">Data as infrastructure</div>
+        <div class="thesis-body">Africa has a data collection gap. Industries that have operated without reliable data for decades represent extraordinary opportunities for the first platform that gets the collection layer right.</div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">03</div>
+        <div class="thesis-title">Networks that compound</div>
+        <div class="thesis-body">We build systems where value grows with every node added. A single sensor is useful. A network of sensors across an industry becomes an intelligence layer that no competitor can easily replicate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VENTURES -->
+<section id="ventures" class="ventures-section">
+  <div class="ventures-inner">
+    <p class="section-label">Our Ventures</p>
+    <h2 class="section-title">What we're<br><em>building</em></h2>
+    <div class="ventures-grid">
+
+      <div class="venture-card">
+        <div class="venture-status">Active · Pilot Stage</div>
+        <div class="venture-name">Certa</div>
+        <div class="venture-tagline">Industrial Fuel Intelligence</div>
+        <div class="venture-body">
+          IoT-based fuel monitoring for industrial and retail operators across Africa. Certa installs independent hardware sensors on fuel tanks and dispensers, creating verifiable ground truth data that no operator can manipulate — solving the fraud problem that existing software solutions fundamentally cannot.
+        </div>
+        <span class="venture-tag">IoT · East Africa</span>
+      </div>
+
+      <div class="venture-card">
+        <div class="venture-status soon">Concept Stage</div>
+        <div class="venture-name">ScaleBridge</div>
+        <div class="venture-tagline">AI Consulting for African Businesses</div>
+        <div class="venture-body">
+          Helping African businesses leverage artificial intelligence pragmatically — not as hype, but as operational leverage. ScaleBridge translates frontier AI capabilities into tools that work in the connectivity, infrastructure, and workflow realities of the continent.
+        </div>
+        <span class="venture-tag">AI · Consulting · Pan-Africa</span>
+      </div>
+
+      <div class="venture-card" style="grid-column: 1 / -1; opacity: 0.5;">
+        <div class="venture-status soon">Future</div>
+        <div class="venture-name" style="font-size: 22px; color: var(--slate);">Expanding the mesh</div>
+        <div class="venture-body">
+          The infrastructure layer being built for fuel monitoring is designed to expand. Water distribution, electricity, agriculture, cold chain — every sector where physical measurement gaps create economic losses is a future market. The platform compounds with each new domain.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-section">
+  <p class="pull-quote">
+    "The problems worth solving are the ones that have resisted solution for decades — not because no one was smart enough, but because <em>no one was close enough</em>."
+  </p>
+  <p class="pull-attribution">James Alituhikya · Founder, PaintedSkyway</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Painted<span>Skyway</span></div>
+      <p class="footer-desc">Technology infrastructure company building hardware-first systems for Africa's most critical industries.</p>
+    </div>
+    <div class="footer-links-col">
+      <h4>Ventures</h4>
+      <a href="#">Certa — Fuel Intelligence</a>
+      <a href="#">ScaleBridge — AI Consulting</a>
+    </div>
+    <div class="footer-links-col">
+      <h4>Contact</h4>
+      <a href="mailto:james@paintedsky.club">james@paintedskyway.com</a>
+      <a href="tel:+16414511885">+1 641 451 1885</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 PaintedSkyway LLC. All rights reserved.</p>
+    <p class="footer-location">Washington State, USA, East Africa</p>
+  </div>
+</footer>
+
 </body>
 </html>
